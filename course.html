@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - SM English Classes</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="website icon" type="png" href="./sm main logo-modified.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        .social-icons a{
+    text-decoration: none;
+}
+        .course-hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=2070&auto=format');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .courses-section {
+            padding: 100px 5%;
+            background: #f8f9fa;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .course-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .course-card:hover .course-image img {
+            transform: scale(1.1);
+        }
+
+        .course-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #0000FE;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            z-index: 1;
+        }
+
+        .course-content {
+            padding: 30px;
+        }
+
+        .course-title {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .course-description {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .course-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .course-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            color: #444;
+        }
+
+        .course-features li i {
+            color: #0000FE;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .course-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0000FE;
+        }
+
+        .enroll-button {
+            background: #0000FE;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .enroll-button:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .enroll-button:hover:before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .enroll-button:hover {
+            background: #0000cc;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .courses-section {
+                padding: 60px 20px;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .course-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        .floating-shapes div {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s linear infinite;
+        }
+
+        .floating-shapes div:nth-child(1) {
+            top: 20%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .floating-shapes div:nth-child(2) {
+            top: 60%;
+            left: 50%;
+            animation-delay: 4s;
+            width: 80px;
+            height: 80px;
+        }
+
+        .floating-shapes div:nth-child(3) {
+            top: 30%;
+            right: 30%;
+            animation-delay: 8s;
+            width: 40px;
+            height: 40px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #9696ad, #43434b);
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section {
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50px;
+            height: 2px;
+            background: white;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            padding-left: 10px;
+            opacity: 0.8;
+        }
+
+        .footer-links i {
+            font-size: 1.2rem;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact i {
+            font-size: 1.2rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            color: white;
+            text-decoration: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: white;
+            color: #0000FE;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-links a {
+                justify-content: center;
+            }
+
+            .footer-contact p {
+                justify-content: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+        }
+        .navbar {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.8rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.dark-mode .navbar {
+    background: rgba(18, 18, 18, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+/* Logo Styles */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    transform-origin: left center;
+}
+
+.brand:hover {
+    animation: logoWiggle 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes logoWiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+}
+
+.brand img {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.brand:hover img {
+    transform: scale(1.1);
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 700;
+    font-family: "Bangers", system-ui;
+}
+
+.dark-mode .brand-name {
+    color: #fff;
+}
+
+/* Navigation Menu */
+.nav-menu {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.dark-mode .nav-link {
+    color: #fff;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Social Media Icons */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-left: 1rem;
+}
+
+.social-link {
+    color: #333;
+    font-size: 1.4rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode .social-link {
+    color: #fff;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #007bff, #00c6ff);
+    transition: all 0.3s ease;
+    z-index: -1;
+    border-radius: 50%;
+}
+
+.social-link:hover {
+    color: white;
+    transform: translateY(-5px);
+}
+
+.social-link:hover::before {
+    top: 0;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.8rem;
+    font-size: 1.4rem;
+    color: #333;
+    border-radius: 50%;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.dark-mode .theme-toggle {
+    color: #fff;
+}
+
+.theme-toggle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(0, 123, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease;
+}
+
+.theme-toggle:hover::before {
+    width: 150%;
+    height: 150%;
+}
+
+.theme-toggle:hover {
+    transform: rotate(180deg);
+}
+
+/* Mobile Menu Button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 100;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 5px 0;
+    border-radius: 3px;
+    transition: all 0.4s ease;
+}
+
+.dark-mode .menu-toggle span {
+    background: #fff;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        padding: 2rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
+    }
+
+    .dark-mode .nav-menu {
+        background: rgba(18, 18, 18, 0.98);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-item {
+        opacity: 0;
+        transform: translateX(100px);
+        transition: all 0.4s ease;
+    }
+
+    .nav-menu.active .nav-item {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .nav-menu.active .nav-item:nth-child(1) { transition-delay: 0.1s; }
+    .nav-menu.active .nav-item:nth-child(2) { transition-delay: 0.2s; }
+    .nav-menu.active .nav-item:nth-child(3) { transition-delay: 0.3s; }
+    .nav-menu.active .nav-item:nth-child(4) { transition-delay: 0.4s; }
+    .nav-menu.active .nav-item:nth-child(5) { transition-delay: 0.5s; }
+    .nav-menu.active .nav-item:nth-child(6) { transition-delay: 0.6s; }
+
+    .social-icons {
+        margin: 1rem 0;
+        justify-content: center;
+    }
+
+    .menu-toggle.active span:first-child {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:last-child {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .brand-name {
+        font-size: 1.2rem;
+    }
+
+    .brand img {
+        height: 35px;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand">
+                <img src="smclasses-logo.png" alt="SM English Classes Logo">
+                <span class="brand-name">SM English Classes</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="course.html" class="nav-link">Courses</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item">
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/smenglishclasses?mibextid=kFxxJD" class="social-link" target="_blank" aria-label="Facebook">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/smenglishclasses/?igshid=YzljYTk1ODg3Zg%3D%3D" class="social-link" target="_blank" aria-label="Instagram">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="https://youtube.com/@smenglishclasses?si=42cA29yA7SSZcd0G" class="social-link" target="_blank" aria-label="YouTube">
+                            <i class="ri-youtube-fill"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="WhatsApp">
+                            <i class="ri-whatsapp-line"></i>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <button class="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="ri-sun-line" id="theme-icon"></i>
+                    </button>
+                </li>
+            </ul>
+
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="course-hero">
+        <div class="floating-shapes">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="hero-content">
+            <h1>Transform Your English Speaking Journey</h1>
+            <p>Choose from our specially designed courses to achieve fluency and confidence in English communication</p>
+        </div>
+    </section>
+
+    <section class="courses-section">
+        <div class="section-header">
+            <h2>Our Featured Courses</h2>
+            <p>Select the perfect course that matches your learning goals and take the first step towards English mastery</p>
+        </div>
+
+        <div class="courses-grid">
+            <!-- 6 Months Master Course -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format" alt="6 Months Course">
+                    <span class="course-badge">Most Popular</span>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">6 Months Master Course</h3>
+                    <p class="course-description">Comprehensive English mastery program covering speaking, grammar, and business communication.</p>
+                    <ul class="course-features">
+                        <li><i class="ri-check-line"></i>Complete grammar coverage</li>
+                        <li><i class="ri-check-line"></i>Business English modules</li>
+                        <li><i class="ri-check-line"></i>Interview preparation</li>
+                        <li><i class="ri-check-line"></i>Live interactive sessions</li>
+                        <li><i class="ri-check-line"></i>Certification included</li>
+                    </ul>
+                    <div class="course-footer">
+                        <div class="course-price">₹2,500</div>
+                        <a href="master-course.html" class="enroll-button learn-more-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 90 Days Speaking Challenge -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format" alt="90 Days Challenge">
+                    <span class="course-badge">Intensive</span>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">90 Days Speaking Challenge</h3>
+                    <p class="course-description">Intensive speaking course designed to transform your communication skills through daily practice.</p>
+                    <ul class="course-features">
+                        <li><i class="ri-check-line"></i>Daily speaking exercises</li>
+                        <li><i class="ri-check-line"></i>Pronunciation training</li>
+                        <li><i class="ri-check-line"></i>Real-world scenarios</li>
+                        <li><i class="ri-check-line"></i>Progress tracking</li>
+                        <li><i class="ri-check-line"></i>Personal mentoring</li>
+                    </ul>
+                    <div class="course-footer">
+                        <div class="course-price">₹1,499</div>
+                        <a href="speaking-challenge.html" class="enroll-button learn-more-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 90 Days Fluency Challenge -->
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1200&auto=format" alt="Fluency Challenge">
+                    <span class="course-badge">Advanced</span>
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">90 Days Fluency Challenge</h3>
+                    <p class="course-description">Advanced program focused on achieving natural fluency through immersive learning.</p>
+                    <ul class="course-features">
+                        <li><i class="ri-check-line"></i>Advanced conversation</li>
+                        <li><i class="ri-check-line"></i>Accent reduction</li>
+                        <li><i class="ri-check-line"></i>Public speaking</li>
+                        <li><i class="ri-check-line"></i>Group discussions</li>
+                        <li><i class="ri-check-line"></i>Weekly assessments</li>
+                    </ul>
+                    <div class="course-footer">
+                        <div class="course-price">₹1,499</div>
+                        <a href="fluency-challenge.html" class="enroll-button learn-more-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>SM English Classes is dedicated to transforming lives through quality English education. We offer comprehensive courses designed to enhance your communication skills and boost your confidence.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/smenglishclasses?mibextid=kFxxJD" target="_blank"><i class="ri-facebook-fill"></i></a>
+                    <a href="https://www.instagram.com/smenglishclasses/?igsh=YzljYTk1ODg3Zg%3D%3D" target="_blank"><i class="ri-instagram-line"></i></a>
+                    <a href="https://youtube.com/@smenglishclasses?si=42cA29yA7SSZcd0G" target="_blank"><i class="ri-youtube-fill"></i></a>
+                    <a href="#"><i class="ri-linkedin-fill"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="./index.html"><i class="ri-home-4-line"></i>Home</a></li>
+                    <li><a href="./about.html"><i class="ri-information-line"></i>About Us</a></li>
+                    <li><a href="./course.html"><i class="ri-book-open-line"></i>Courses</a></li>
+                    <li><a href="./contact.html"><i class="ri-contacts-line"></i>Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Our Courses</h3>
+                <ul class="footer-links">
+                    <li><a href="./master-course.html"><i class="ri-award-line"></i>6 Months Master Course</a></li>
+                    <li><a href="./speaking-challenge.html"><i class="ri-speak-line"></i>90 Days Speaking Challenge</a></li>
+                    <li><a href="./fluency-challenge.html"><i class="ri-customer-service-2-line"></i>90 Days Fluency Challenge</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section footer-contact">
+                <h3>Contact Info</h3>
+                <p><i class="ri-map-pin-line"></i>Hanuman Mandir, Nagla ka Budha, Dhanauli Jagner Road, Agra - Uttar Pradesh 282001</p>
+                <p><i class="ri-phone-line"></i>+91 8077223832</p>
+                <p><i class="ri-mail-line"></i>shekharmadhukar8@gmail.com</p>
+                <p><i class="ri-time-line"></i>Mon - Sat: 9:00 AM - 6:00 PM</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 SM English Classes. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero section animations
+        gsap.from(".hero-content h1", {
+            y: 100,
+            opacity: 0,
+            duration: 1.5,
+            ease: "power4.out"
+        });
+
+        gsap.from(".hero-content p", {
+            y: 50,
+            opacity: 0,
+            duration: 1.5,
+            delay: 0.5,
+            ease: "power4.out"
+        });
+
+        // Section header animations
+        gsap.from(".section-header", {
+            scrollTrigger: {
+                trigger: ".section-header",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        // Course cards stagger animation
+        gsap.from(".course-card", {
+            scrollTrigger: {
+                trigger: ".courses-grid",
+                start: "top 70%",
+                toggleActions: "play none none reverse"
+            },
+            y: 100,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        // Learn More button animations
+        document.querySelectorAll('.learn-more-btn').forEach(button => {
+            gsap.to(button, {
+                scrollTrigger: {
+                    trigger: button,
+                    start: "top 90%",
+                    toggleActions: "play none none reverse"
+                },
+                scale: 1.1,
+                duration: 0.5,
+                repeat: 1,
+                yoyo: true,
+                ease: "power2.inOut"
+            });
+
+            button.addEventListener('mouseenter', () => {
+                gsap.to(button, {
+                    scale: 1.1,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+
+            button.addEventListener('mouseleave', () => {
+                gsap.to(button, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: "power2.in"
+                });
+            });
+        });
+
+        // Features animation
+        gsap.from(".course-features li", {
+            scrollTrigger: {
+                trigger: ".course-features",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            },
+            x: -30,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.1
+        });
+
+        // Hover animations for course cards
+        document.querySelectorAll('.course-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card.querySelector('.course-image img'), {
+                    scale: 1.1,
+                    duration: 0.3
+                });
+                gsap.to(card.querySelector('.course-badge'), {
+                    scale: 1.1,
+                    duration: 0.3
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card.querySelector('.course-image img'), {
+                    scale: 1,
+                    duration: 0.3
+                });
+                gsap.to(card.querySelector('.course-badge'), {
+                    scale: 1,
+                    duration: 0.3
+                });
+            });
+        });
+
+        // Footer animations
+        gsap.from(".footer-section", {
+            scrollTrigger: {
+                trigger: ".footer",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        gsap.from(".footer-social a", {
+            scrollTrigger: {
+                trigger: ".footer-social",
+                start: "top 90%",
+                toggleActions: "play none none reverse"
+            },
+            scale: 0,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "back.out(1.7)"
+        });
+    </script>
+
+    <script>
+        let darkModeToggle = document
+            .getElementById('darkModeToggle');
+        let body = document.body;
+        darkModeToggle.addEventListener('change', function () {
+            if (darkModeToggle.checked) {
+                enableDarkMode();
+            } else {
+                disableDarkMode();
+            }
+        });
+
+        function enableDarkMode() {
+            body.classList.add('dark-mode');
+        };
+
+        function disableDarkMode() {
+            body.classList.remove('dark-mode');
+        };
+
+
+        function myFunction() {
+            let x = document.getElementById("myTopnav");
+            if (x.classList.contains("responsive")) {
+                x.classList.remove("responsive");
+            } else {
+                x.classList.add("responsive");
+            }
+        }
+        const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+if (menuToggle && navMenu) {
+    // Toggle menu on button click
+    menuToggle.addEventListener('click', (e) => {
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        document.body.classList.toggle('menu-open'); // Prevent background scrolling when menu is open
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!menuToggle.contains(e.target) && !navMenu.contains(e.target) && navMenu.classList.contains('active')) {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-link, .social-link').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        });
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+    });
+}
+
+// Dark mode toggle functionality
+const themeToggle = document.querySelector('.theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+
+// Check for saved theme preference
+if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+    themeIcon.classList.replace('ri-sun-line', 'ri-moon-line');
+}
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    if (document.body.classList.contains('dark-mode')) {
+        themeIcon.classList.replace('ri-sun-line', 'ri-moon-line');
+        localStorage.setItem('darkMode', 'true');
+    } else {
+        themeIcon.classList.replace('ri-moon-line', 'ri-sun-line');
+        localStorage.setItem('darkMode', 'false');
+    }
+});
+
+// Navbar scroll effect
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll <= 0) {
+        navbar.style.transform = 'translateY(0)';
+        return;
+    }
+
+    if (currentScroll > lastScroll && currentScroll > 100) {
+        // Scrolling down - hide navbar
+        navbar.style.transform = 'translateY(-100%)';
+    } else {
+        // Scrolling up - show navbar
+        navbar.style.transform = 'translateY(0)';
+    }
+    lastScroll = currentScroll;
+});
+
+    </script>
+
+</body>
+
+</html>

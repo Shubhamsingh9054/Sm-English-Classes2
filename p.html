@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paytm QR Payment</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="website icon" type="png" href="./sm main logo-modified.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f7fc;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .payment-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .payment-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .payment-header h1 {
+            color: #4070f4;
+            margin-bottom: 15px;
+        }
+
+        .notice {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #ff9800;
+        }
+
+        .notice span {
+            color: #f44336;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #4070f4;
+            outline: none;
+        }
+
+        button {
+            background: #4070f4;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #3060e0;
+            transform: translateY(-2px);
+        }
+
+        #qr-container {
+            margin-top: 30px;
+            text-align: center;
+            padding: 20px;
+            border: 2px dashed #e0e0e0;
+            border-radius: 12px;
+            display: none;
+        }
+
+        #qr-container h3 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #qrcode {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        #qrcode img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .payment-details {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .whatsapp-btn {
+            background: #25d366;
+            margin-top: 20px;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1fb959;
+        }
+
+        .error-message {
+            color: #f44336;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .upi-buttons {
+            margin-top: 20px;
+        }
+
+        .upi-button {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .upi-button img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+   
+    <div class="payment-container">
+        <div class="payment-header">
+            <h1><i class="fas fa-qrcode"></i> Online QR Payment</h1>
+            <div class="notice">
+                <span>Notice:</span> Fill your details and choose EMI option to generate QR code for payment. After payment,
+                take a screenshot and send it via WhatsApp.
+            </div>
+        </div>
+
+        <form id="payment-form">
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Your Name</label>
+                <input type="text" id="name" placeholder="Enter your full name" required>
+                <div class="error-message" id="name-error">Please enter your name</div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-rupee-sign"></i> Amount</label>
+                <input type="number" id="amount" value="2500" readonly>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-clock"></i> Payment Option</label>
+                <select id="emi-options">
+                    <option value="2500">One-time Payment - ₹2,500</option>
+                    <option value="834">3 Months EMI - ₹834/month</option>
+                    <option value="417">6 Months EMI - ₹417/month</option>
+                    <option value="1">6 Months EMI - ₹1/month</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-calendar"></i> Payment Date</label>
+                <input type="date" id="payment-date" required>
+                <div class="error-message" id="date-error">Please select a date</div>
+                <p id="payment-day"></p>
+            </div>
+
+            <button type="submit"><i class="fas fa-qrcode"></i> Generate QR Code</button>
+        </form>
+
+        <div id="qr-container">
+            <h3><i class="fas fa-qrcode"></i> Scan QR Code to Pay</h3>
+            <div id="qrcode"></div>
+            <div class="payment-details"></div>
+        </div>
+
+        <a href="https://wa.link/ilun89">
+            <button class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Send Payment Screenshot</button>
+        </a>
+    </div>
+
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+        // Get form elements
+        const form = document.getElementById('payment-form');
+        const qrContainer = document.getElementById('qr-container');
+        const emiSelect = document.getElementById('emi-options');
+        const amountInput = document.getElementById('amount');
+        const paymentDateInput = document.getElementById('payment-date');
+        const paymentDayDisplay = document.getElementById('payment-day');
+        const nameInput = document.getElementById('name');
+
+        // Error message elements
+        const nameError = document.getElementById('name-error');
+        const dateError = document.getElementById('date-error');
+
+        // Set minimum date to today
+        paymentDateInput.min = new Date().toISOString().split('T')[0];
+
+        // Function to create UPI QR Code
+        function createQRCode(paymentData) {
+            const qrcodeDiv = document.getElementById('qrcode');
+            qrcodeDiv.innerHTML = ''; // Clear previous QR code
+
+            // Create UPI payment URL
+            const upiUrl = `upi://pay?pa=8909679356@pthdfc&pn=${encodeURIComponent(paymentData.name)}&am=${paymentData.amount}&cu=INR&tn=${encodeURIComponent(paymentData.note)}`;
+
+            try {
+                new QRCode(qrcodeDiv, {
+                    text: upiUrl,
+                    width: 256,
+                    height: 256,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+
+                // Add UPI app buttons below QR code
+                const upiButtons = document.createElement('div');
+                upiButtons.className = 'upi-buttons';
+                upiButtons.innerHTML = `
+                    <p style="margin: 15px 0;">Or pay using:</p>
+                    <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+                        <a href="phonepe://pay?pa=8909679356@pthdfc&pn=${encodeURIComponent(paymentData.name)}&am=${paymentData.amount}&cu=INR&tn=${encodeURIComponent(paymentData.note)}" class="upi-button">
+                            <img src="https://play-lh.googleusercontent.com/6iyA2zVz5PyyMjK5SIxdUhrb7oh9cYVXJ93q6DZkmx07Er1o90PXYeo6mzL4VC2Gj9s" alt="PhonePe" style="width: 40px; height: 40px; border-radius: 8px;">
+                        </a>
+                        <a href="gpay://upi/pay?pa=8909679356@pthdfc&pn=${encodeURIComponent(paymentData.name)}&am=${paymentData.amount}&cu=INR&tn=${encodeURIComponent(paymentData.note)}" class="upi-button">
+                            <img src="https://play-lh.googleusercontent.com/HArtbyi53u0jnqhnnxkQnMx9dHOERNcprZyKnInd2nrfM7Wd9ivMNTiz7IJP6-mSpwk" alt="Google Pay" style="width: 40px; height: 40px; border-radius: 8px;">
+                        </a>
+                        <a href="paytmmp://pay?pa=8909679356@pthdfc&pn=${encodeURIComponent(paymentData.name)}&am=${paymentData.amount}&cu=INR&tn=${encodeURIComponent(paymentData.note)}" class="upi-button">
+                            <img src="https://play-lh.googleusercontent.com/6_Qan3RBgpJUj0C2ct4l0rKKVdiJgF6vy0ctfWyQ7aN0lBjs78M-1cQUONQSVeo2jfs" alt="Paytm" style="width: 40px; height: 40px; border-radius: 8px;">
+                        </a>
+                           <a href="paytmmp://pay?pa=8909679356@pthdfc&pn=${encodeURIComponent(paymentData.name)}&am=${paymentData.amount}&cu=INR&tn=${encodeURIComponent(paymentData.note)}" class="upi-button">
+                            <img src="https://play-lh.googleusercontent.com/6_Qan3RBgpJUj0C2ct4l0rKKVdiJgF6vy0ctfWyQ7aN0lBjs78M-1cQUONQSVeo2jfs" alt="Paytm" style="width: 40px; height: 40px; border-radius: 8px;">
+                        </a>
+                    </div>
+                    <div style="margin-top: 15px; font-size: 14px; color: #666;">
+                        <p><strong>UPI ID:</strong> 8909679356@pthdfc</p>
+                    </div>
+                `;
+                qrcodeDiv.appendChild(upiButtons);
+                return true;
+            } catch (error) {
+                console.error('Error generating QR code:', error);
+                return false;
+            }
+        }
+
+        // Update amount when EMI option changes
+        emiSelect.addEventListener('change', function (e) {
+            amountInput.value = e.target.value;
+        });
+
+        // Show day name when date is selected
+        paymentDateInput.addEventListener('change', function (e) {
+            const date = new Date(e.target.value);
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            paymentDayDisplay.textContent = days[date.getDay()];
+            dateError.style.display = 'none';
+        });
+
+        // Handle form submission
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Reset error messages
+            nameError.style.display = 'none';
+            dateError.style.display = 'none';
+
+            // Validate form
+            let isValid = true;
+
+            if (!nameInput.value.trim()) {
+                nameError.style.display = 'block';
+                isValid = false;
+            }
+
+            if (!paymentDateInput.value) {
+                dateError.style.display = 'block';
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            // Get form values
+            const name = nameInput.value.trim();
+            const amount = amountInput.value;
+            const date = paymentDateInput.value;
+            const emiOption = emiSelect.options[emiSelect.selectedIndex].text;
+
+            // Create payment data
+            const paymentData = {
+                name: name,
+                amount: amount,
+                date: date,
+                type: emiOption,
+                note: `Payment for ${emiOption} - Due: ${date}`
+            };
+
+            // Create QR code
+            if (createQRCode(paymentData)) {
+                // Show QR container
+                qrContainer.style.display = 'block';
+
+                // Update payment details
+                const detailsDiv = qrContainer.querySelector('.payment-details');
+                detailsDiv.innerHTML = `
+                    <p><strong>Name:</strong> ${name}</p>
+                    <p><strong>Amount:</strong> ₹${amount}</p>
+                    <p><strong>Date:</strong> ${date}</p>
+                    <p><strong>Payment Type:</strong> ${emiOption}</p>
+                    <p><strong>Monthly Payment:</strong> ${emiOption.includes('EMI') ? `₹${amount}/month` : 'Full Payment'}</p>
+                    <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 6px; font-size: 14px;">
+                        <p style="margin: 0;"><i class="fas fa-info-circle"></i> Scan the QR code with any UPI app or click on the app icons below to pay</p>
+                    </div>
+                `;
+
+                // Scroll to QR code
+                qrContainer.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>

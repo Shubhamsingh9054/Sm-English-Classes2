@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - SM English Classes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="website icon" type="png" href="./sm main logo-modified.png">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1d4ed8;
+            --text-color: #1f2937;
+            --bg-color: #ffffff;
+            --nav-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* Navigation */
+        .nav{
+    width: 100%;
+    height: 12vh;
+    background-color: rgba(228, 228, 228, 0.747);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 80px;
+    /* position: fixed; */
+}
+.social-icons a{
+    text-decoration: none;
+}
+.nav-1 img{
+    width: 100px;
+}
+.ras{
+    display: none;
+}
+
+.nav-2{
+    display: flex;
+    gap: 100px;
+}
+.nav-3{
+    display: flex;
+}
+.nav-2 a{
+    border-radius: 50%;
+    /* box-sizing: border-box; */
+    width: 15px; 
+    height: 15px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    display: flex;
+    gap: 10px;
+    font-size: 1rem;
+    font-family: sans-serif;
+    color: black;
+}
+
+
+.nav-2 a:hover{
+    color: var(--color);
+    /* color: white; */
+    background: transparent;
+    box-shadow: 0 0 5px var(--color), 
+                 0 0 20px var(--color), 
+                    0 0 35px var(--color), 
+                   0 0 50px var(--color) ;
+}
+
+.nav-3 a{
+    margin: 10px;
+    border-radius: 50%;
+    width: 40px; 
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: 0.3s ease;
+    font-size: 1.2rem;
+    color: var(--color);
+}
+
+
+.nav-3 a:hover{
+    background: var(--color);
+    color: #010101;
+    box-shadow: 0 0 5px var(--color), 
+                 0 0 20px var(--color), 
+                    0 0 35px var(--color), 
+                   0 0 50px var(--color) ;
+}
+
+.nav-4{
+    display: flex;
+    align-items: center;
+    padding-right: 40px
+    
+}
+#on{
+    width: 3vw;
+    font-size: 22px;
+    /* display: block; */
+    color: rgb(34, 34, 34);
+    cursor: pointer;
+}
+#off{
+    width: 3vw;
+    display: none;
+    font-size: 22px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+      cursor: pointer;
+      font-size: 1.1rem;
+    border: none;
+    font-family: sans-serif;
+    outline: none;
+    color: rgb(17, 17, 17);
+    font-weight: 100;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+  }
+  
+  /* Add a red background color to navbar links on hover */
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: transparent;
+  }
+  
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  /* Add a grey background color to dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  #mn{
+    display: none;
+  }
+
+        /* About Hero Section */
+        .about-hero {
+            width: 100vw;
+            overflow-x: hidden;
+            padding-top: var(--nav-height);
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .about-hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .about-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        .about-hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            opacity: 0.9;
+        }
+
+        /* About Content */
+        .about-content {
+            width: 100vw;
+            overflow-x: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #4a4a4a;
+        }
+
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .achievement-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .achievement-item i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .achievement-item h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .achievement-item p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .achievements {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        /* Dark Mode */
+        .dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+        }
+
+        .dark-mode .about-text p {
+            color: #e0e0e0;
+        }
+
+        .dark-mode .achievement-item {
+            background: #2d2d2d;
+        }
+
+        .dark-mode .achievement-item p {
+            color: #bbb;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-hero {
+                padding: 60px 40px;
+            }
+
+            .about-hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .about-hero p {
+                max-width: 80%;
+            }
+
+            .about-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+                padding: 40px;
+            }
+
+            .about-card {
+                padding: 25px;
+            }
+
+            .about-content {
+                padding: 50px 0;
+            }
+
+            .about-section {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 40px 20px;
+                text-align: center;
+            }
+
+            .about-hero h1 {
+                font-size: 2.2rem;
+                margin-bottom: 20px;
+            }
+
+            .about-hero p {
+                font-size: 1rem;
+                max-width: 100%;
+                padding: 0 15px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                padding: 20px;
+            }
+
+            .about-card {
+                padding: 20px;
+            }
+
+            .about-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .about-card p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            .about-content {
+                padding: 30px 0;
+            }
+
+            .about-section {
+                padding: 30px 20px;
+            }
+
+            .about-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .about-section p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                text-align: center;
+            }
+
+            .about-image {
+                margin: 30px auto;
+                max-width: 100%;
+                height: auto;
+            }
+
+            .about-values {
+                padding: 30px 20px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .value-card {
+                padding: 20px;
+            }
+
+            .value-card i {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
+            }
+
+            .value-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .value-card p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-hero {
+                padding: 30px 15px;
+            }
+
+            .about-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .about-hero p {
+                font-size: 0.9rem;
+                padding: 0 10px;
+            }
+
+            .about-grid {
+                padding: 15px;
+                gap: 20px;
+            }
+
+            .about-card {
+                padding: 15px;
+            }
+
+            .about-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .about-card p {
+                font-size: 0.9rem;
+            }
+
+            .about-section {
+                padding: 25px 15px;
+            }
+
+            .about-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .about-section p {
+                font-size: 0.9rem;
+            }
+
+            .about-image {
+                margin: 20px auto;
+            }
+
+            .about-values {
+                padding: 25px 15px;
+            }
+
+            .value-card {
+                padding: 15px;
+            }
+
+            .value-card i {
+                font-size: 2rem;
+                margin-bottom: 12px;
+            }
+
+            .value-card h3 {
+                font-size: 1.3rem;
+                margin-bottom: 10px;
+            }
+
+            .value-card p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #9696ad, #43434b);
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section {
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50px;
+            height: 2px;
+            background: white;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            padding-left: 10px;
+            opacity: 0.8;
+        }
+
+        .footer-links i {
+            font-size: 1.2rem;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact i {
+            font-size: 1.2rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            color: white;
+            text-decoration: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: white;
+            color: #0000FE;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-links a {
+                justify-content: center;
+            }
+
+            .footer-contact p {
+                justify-content: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+        }
+        .navbar {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.8rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.dark-mode .navbar {
+    background: rgba(18, 18, 18, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+/* Logo Styles */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    transform-origin: left center;
+}
+
+.brand:hover {
+    animation: logoWiggle 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes logoWiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+}
+
+.brand img {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.brand:hover img {
+    transform: scale(1.1);
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 700;
+    font-family: "Bangers", system-ui;
+}
+
+.dark-mode .brand-name {
+    color: #fff;
+}
+
+/* Navigation Menu */
+.nav-menu {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.dark-mode .nav-link {
+    color: #fff;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Social Media Icons */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-left: 1rem;
+}
+
+.social-link {
+    color: #333;
+    font-size: 1.4rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode .social-link {
+    color: #fff;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #007bff, #00c6ff);
+    transition: all 0.3s ease;
+    z-index: -1;
+    border-radius: 50%;
+}
+
+.social-link:hover {
+    color: white;
+    transform: translateY(-5px);
+}
+
+.social-link:hover::before {
+    top: 0;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.8rem;
+    font-size: 1.4rem;
+    color: #333;
+    border-radius: 50%;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.dark-mode .theme-toggle {
+    color: #fff;
+}
+
+.theme-toggle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(0, 123, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease;
+}
+
+.theme-toggle:hover::before {
+    width: 150%;
+    height: 150%;
+}
+
+.theme-toggle:hover {
+    transform: rotate(180deg);
+}
+
+/* Mobile Menu Button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 100;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 5px 0;
+    border-radius: 3px;
+    transition: all 0.4s ease;
+}
+
+.dark-mode .menu-toggle span {
+    background: #fff;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        padding: 2rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
+    }
+
+    .dark-mode .nav-menu {
+        background: rgba(18, 18, 18, 0.98);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-item {
+        opacity: 0;
+        transform: translateX(100px);
+        transition: all 0.4s ease;
+    }
+
+    .nav-menu.active .nav-item {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .nav-menu.active .nav-item:nth-child(1) { transition-delay: 0.1s; }
+    .nav-menu.active .nav-item:nth-child(2) { transition-delay: 0.2s; }
+    .nav-menu.active .nav-item:nth-child(3) { transition-delay: 0.3s; }
+    .nav-menu.active .nav-item:nth-child(4) { transition-delay: 0.4s; }
+    .nav-menu.active .nav-item:nth-child(5) { transition-delay: 0.5s; }
+    .nav-menu.active .nav-item:nth-child(6) { transition-delay: 0.6s; }
+
+    .social-icons {
+        margin: 1rem 0;
+        justify-content: center;
+    }
+
+    .menu-toggle.active span:first-child {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:last-child {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .brand-name {
+        font-size: 1.2rem;
+    }
+
+    .brand img {
+        height: 35px;
+    }
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand">
+                <img src="smclasses-logo.png" alt="SM English Classes Logo">
+                <span class="brand-name">SM English Classes</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="course.html" class="nav-link">Courses</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item">
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/smenglishclasses?mibextid=kFxxJD" class="social-link" target="_blank" aria-label="Facebook">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/smenglishclasses/?igshid=YzljYTk1ODg3Zg%3D%3D" class="social-link" target="_blank" aria-label="Instagram">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="https://youtube.com/@smenglishclasses?si=42cA29yA7SSZcd0G" class="social-link" target="_blank" aria-label="YouTube">
+                            <i class="ri-youtube-fill"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="WhatsApp">
+                            <i class="ri-whatsapp-line"></i>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <button class="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="ri-sun-line" id="theme-icon"></i>
+                    </button>
+                </li>
+            </ul>
+
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h1>About SM English Classes</h1>
+            <p>Empowering students with quality education and comprehensive exam preparation since 2013</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-content">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>Excellence in English Education</h2>
+                <p>
+                    SM English Classes has been at the forefront of English language education since its inception. 
+                    Under the expert guidance of Shekhar Sir, we have helped thousands of students achieve their dreams 
+                    through comprehensive training in spoken English and competitive exam preparation.
+                </p>
+                <p>
+                    Our institute specializes in preparing students for various competitive examinations including 
+                    SSC, CGL, CHSL, MTS, NDA, CDS, AIRFORCE & BANKING Exams. With a proven track record of success, 
+                    we take pride in our innovative teaching methodology that makes learning English enjoyable and effective.
+                </p>
+                <div class="achievements">
+                    <div class="achievement-item">
+                        <i class="fas fa-user-graduate"></i>
+                        <h3>5000+</h3>
+                        <p>Students Trained</p>
+                    </div>
+                    <div class="achievement-item">
+                        <i class="fas fa-trophy"></i>
+                        <h3>1000+</h3>
+                        <p>Success Stories</p>
+                    </div>
+                    <div class="achievement-item">
+                        <i class="fas fa-star"></i>
+                        <h3>10+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" 
+                     alt="Students learning at SM English Classes">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>SM English Classes is dedicated to transforming lives through quality English education. We offer comprehensive courses designed to enhance your communication skills and boost your confidence.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/smenglishclasses?mibextid=kFxxJD" target="_blank"><i class="ri-facebook-fill"></i></a>
+                    <a href="https://www.instagram.com/smenglishclasses/?igsh=YzljYTk1ODg3Zg%3D%3D" target="_blank"><i class="ri-instagram-line"></i></a>
+                    <a href="https://youtube.com/@smenglishclasses?si=42cA29yA7SSZcd0G" target="_blank"><i class="ri-youtube-fill"></i></a>
+                    <a href="#"><i class="ri-linkedin-fill"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="./index.html"><i class="ri-home-4-line"></i>Home</a></li>
+                    <li><a href="./about.html"><i class="ri-information-line"></i>About Us</a></li>
+                    <li><a href="./course.html"><i class="ri-book-open-line"></i>Courses</a></li>
+                    <li><a href="./contact.html"><i class="ri-contacts-line"></i>Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Our Courses</h3>
+                <ul class="footer-links">
+                    <li><a href="./master-course.html"><i class="ri-award-line"></i>6 Months Master Course</a></li>
+                    <li><a href="./speaking-challenge.html"><i class="ri-speak-line"></i>90 Days Speaking Challenge</a></li>
+                    <li><a href="./fluency-challenge.html"><i class="ri-customer-service-2-line"></i>90 Days Fluency Challenge</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section footer-contact">
+                <h3>Contact Info</h3>
+                <p><i class="ri-map-pin-line"></i>Hanuman Mandir, Nagla ka Budha, Dhanauli Jagner Road, Agra - Uttar Pradesh 282001</p>
+                <p><i class="ri-phone-line"></i>+91 8077223832</p>
+                <p><i class="ri-mail-line"></i>shekharmadhukar8@gmail.com</p>
+                <p><i class="ri-time-line"></i>Mon - Sat: 9:00 AM - 6:00 PM</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 SM English Classes. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        // Register ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Navbar Animation
+        gsap.from(".nav", {
+            y: -100,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        // Hero Section Animation
+        const heroTimeline = gsap.timeline();
+        heroTimeline
+            .from('.about-hero', {
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            })
+            .from('.about-hero h1', {
+                y: 100,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            }, "-=0.5")
+            .from('.about-hero p', {
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            }, "-=0.7");
+
+        // About Content Animation
+        const aboutTimeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.about-content',
+                start: 'top 80%',
+                end: 'bottom 20%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        aboutTimeline
+            .from('.about-text h2', {
+                x: -100,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power3.out"
+            })
+            .from('.about-text p', {
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: "power3.out"
+            }, "-=0.4")
+            .from('.about-image', {
+                x: 100,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power3.out"
+            }, "-=0.6");
+
+        // Achievement Items Animation
+        const achievements = gsap.utils.toArray('.achievement-item');
+        achievements.forEach((item, index) => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.6,
+                delay: index * 0.2,
+                ease: "back.out(1.7)"
+            });
+        });
+
+        // Mobile Menu Animation
+        const menu = document.querySelector("#mn");
+        const ras = document.querySelector("#ras");
+        const cross = document.querySelector("#cross");
+
+        if (menu && ras && cross) {
+            menu.addEventListener("click", () => {
+                gsap.to(ras, {
+                    right: "0%",
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+            });
+
+            cross.addEventListener("click", () => {
+                gsap.to(ras, {
+                    right: "-100%",
+                    duration: 0.5,
+                    ease: "power2.in"
+                });
+            });
+        }
+
+        // Dark Mode Toggle Animation
+        const onButton = document.querySelector("#on");
+        const offButton = document.querySelector("#off");
+
+        if (onButton && offButton) {
+            onButton.addEventListener("click", () => {
+                gsap.to(onButton, {
+                    rotation: 360,
+                    duration: 0.5,
+                    onComplete: () => {
+                        onButton.style.display = "none";
+                        offButton.style.display = "block";
+                        document.body.classList.add("dark-mode");
+                    }
+                });
+            });
+
+            offButton.addEventListener("click", () => {
+                gsap.to(offButton, {
+                    rotation: -360,
+                    duration: 0.5,
+                    onComplete: () => {
+                        offButton.style.display = "none";
+                        onButton.style.display = "block";
+                        document.body.classList.remove("dark-mode");
+                    }
+                });
+            });
+        }
+
+        // Hover Animations
+        const achievementItems = document.querySelectorAll('.achievement-item');
+        achievementItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                gsap.to(item, {
+                    y: -10,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+
+            item.addEventListener('mouseleave', () => {
+                gsap.to(item, {
+                    y: 0,
+                    duration: 0.3,
+                    ease: "power2.in"
+                });
+            });
+        });
+
+        // Smooth Scroll Animation
+        const links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    gsap.to(window, {
+                        duration: 1,
+                        scrollTo: {
+                            y: target,
+                            offsetY: 70
+                        },
+                        ease: "power3.inOut"
+                    });
+                }
+            });
+        });
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link, .social-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Dark mode toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.replace('ri-sun-line', 'ri-moon-line');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.replace('ri-sun-line', 'ri-moon-line');
+                localStorage.setItem('darkMode', 'true');
+            } else {
+                themeIcon.classList.replace('ri-moon-line', 'ri-sun-line');
+                localStorage.setItem('darkMode', 'false');
+            }
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll <= 0) {
+                navbar.style.transform = 'translateY(0)';
+                return;
+            }
+
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                // Scrolling down - hide navbar
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up - show navbar
+                navbar.style.transform = 'translateY(0)';
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
